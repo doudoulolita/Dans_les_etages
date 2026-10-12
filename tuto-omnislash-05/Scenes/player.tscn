@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://fujrykuiibdl"]
+
+[ext_resource type="Script" uid="uid://d0ebqy703t5ie" path="res://Scripts/player.gd" id="1_v0iea"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vnhbi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81xng"]
+albedo_color = Color(0.29468766, 0.5374405, 0.6422946, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vnhbi"]
+radius = 1.0415039
+height = 3.8815918
+
+[sub_resource type="SphereMesh" id="SphereMesh_vnhbi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1huc"]
+albedo_color = Color(1, 0.6905102, 0.6255435, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vnhbi"]
+radius = 1.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_1b30h"]
+size = Vector3(0.22557068, 0.27441406, 0.4086914)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h62mb"]
+albedo_color = Color(1, 0.6901961, 0.627451, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_h62mb"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2db6"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Player" type="CharacterBody3D" unique_id=1054418694]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_v0iea")
+
+[node name="Corps" type="MeshInstance3D" parent="." unique_id=1611767316]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+layers = 4
+mesh = SubResource("CapsuleMesh_vnhbi")
+surface_material_override/0 = SubResource("StandardMaterial3D_81xng")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1662559077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0018310547, 0)
+shape = SubResource("CapsuleShape3D_vnhbi")
+
+[node name="Tete" type="MeshInstance3D" parent="." unique_id=394559515]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.524167, 0)
+layers = 4
+mesh = SubResource("SphereMesh_vnhbi")
+surface_material_override/0 = SubResource("StandardMaterial3D_t1huc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=275416060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.521056, 0)
+shape = SubResource("SphereShape3D_vnhbi")
+
+[node name="Nez" type="MeshInstance3D" parent="." unique_id=1917149500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.462, 0.98457515)
+mesh = SubResource("BoxMesh_1b30h")
+surface_material_override/0 = SubResource("StandardMaterial3D_h62mb")
+
+[node name="oeil" type="MeshInstance3D" parent="." unique_id=1391551464]
+transform = Transform3D(0.9998693, 7.068048e-10, 0.016169809, -7.068048e-10, 1, -5.713646e-12, -0.016169809, -5.713646e-12, 0.9998693, -0.36868262, 2.729702, 0.8756843)
+mesh = SubResource("SphereMesh_h62mb")
+surface_material_override/0 = SubResource("StandardMaterial3D_m2db6")
+
+[node name="oeil2" type="MeshInstance3D" parent="." unique_id=1022059689]
+transform = Transform3D(0.9998693, 7.068048e-10, 0.016169809, -7.068048e-10, 1, -5.713646e-12, -0.016169809, -5.713646e-12, 0.9998693, 0.3, 2.73, 0.876)
+mesh = SubResource("SphereMesh_h62mb")
+surface_material_override/0 = SubResource("StandardMaterial3D_m2db6")

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://bhc4xnnea370a"]
+
+[ext_resource type="PackedScene" uid="uid://f70nfkc1837r" path="res://Scenes/etage_0.tscn" id="1_tumq0"]
+[ext_resource type="PackedScene" uid="uid://bu6hposcuyen6" path="res://Scenes/box.tscn" id="2_k5f4k"]
+[ext_resource type="PackedScene" uid="uid://fujrykuiibdl" path="res://Scenes/player.tscn" id="3_6phgx"]
+[ext_resource type="PackedScene" uid="uid://dty5k0v35jh1g" path="res://Scenes/escalier.tscn" id="4_81xng"]
+[ext_resource type="PackedScene" uid="uid://cojocx1gam1jv" path="res://Scenes/sous_sol_1.tscn" id="4_wqkje"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0f350"]
+sky_top_color = Color(0.24660608, 0.4289907, 0.590619, 1)
+sky_horizon_color = Color(0.5894154, 0.59768975, 0.61424273, 1)
+
+[sub_resource type="Sky" id="Sky_k5f4k"]
+sky_material = SubResource("ProceduralSkyMaterial_0f350")
+
+[sub_resource type="Environment" id="Environment_6phgx"]
+background_mode = 2
+sky = SubResource("Sky_k5f4k")
+
+[node name="Level" type="Node3D" unique_id=129150085]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1175918886]
+transform = Transform3D(1, 0, 0, 0, 0.9135611, 0.4067015, 0, -0.4067015, 0.9135611, 0, 18.10692, 39.853275)
+environment = SubResource("Environment_6phgx")
+fov = 97.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=671998586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.207474, 0)
+
+[node name="Box1" parent="." unique_id=259116536 node_paths=PackedStringArray("player") instance=ExtResource("2_k5f4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5043297, 1.8055911, -5.8868504)
+contact_monitor = true
+max_contacts_reported = 6
+player = NodePath("../Player")
+
+[node name="Box2" parent="." unique_id=1816649496 node_paths=PackedStringArray("player") instance=ExtResource("2_k5f4k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.331667, 26.19399, 12.367733)
+contact_monitor = true
+max_contacts_reported = 6
+player = NodePath("../Player")
+
+[node name="Player" parent="." unique_id=1054418694 instance=ExtResource("3_6phgx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1616745, 0)
+
+[node name="Escalier" parent="." unique_id=222825302 instance=ExtResource("4_81xng")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 10.953991, 0.30368423, 0.17860413)
+
+[node name="Escalier2" parent="." unique_id=1143605715 instance=ExtResource("4_81xng")]
+transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, -4.3711385e-08, -10.863636, 0.30368423, -0.02823639)
+
+[node name="Plateforme_sous_sol" parent="." unique_id=1673906751 instance=ExtResource("4_wqkje")]
+
+[node name="Plateforme_etage_0" parent="." unique_id=1634776530 instance=ExtResource("1_tumq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.229748, -0.09305)
+
+[connection signal="body_entered" from="Box1" to="Player" method="_on_box_1_body_entered"]
+[connection signal="body_entered" from="Box2" to="Player" method="_on_box_2_body_entered"]
