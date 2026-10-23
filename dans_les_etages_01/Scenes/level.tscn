@@ -8,8 +8,14 @@
 
 [node name="Level" type="Node3D" unique_id=129150085]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=671998586]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.207474, 0)
+[node name="Eclairage_sous_sol" type="OmniLight3D" parent="." unique_id=1695669813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.43309, 0)
+omni_range = 20.0
+
+[node name="Eclairage_etage" type="OmniLight3D" parent="." unique_id=279299894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.312157, 0)
+light_energy = 5.0
+omni_range = 20.0
 
 [node name="Box1" parent="." unique_id=259116536 node_paths=PackedStringArray("player") instance=ExtResource("2_k5f4k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5043297, 1.8055911, -5.8868504)
@@ -39,3 +45,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.229748, -0.09305)
 
 [connection signal="body_entered" from="Box1" to="Player" method="_on_box_1_body_entered"]
 [connection signal="body_entered" from="Box2" to="Player" method="_on_box_2_body_entered"]
+
+[editable path="Player"]
