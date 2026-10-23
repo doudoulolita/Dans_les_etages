@@ -1,2 +1,0 @@
-class_name Escalier
-extends RigidBody3D

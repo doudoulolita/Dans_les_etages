@@ -1,2 +1,0 @@
-class_name Plateforme
-extends StaticBody3D
